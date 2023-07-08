@@ -7,33 +7,27 @@ clean:
 	@echo "Done"
 
 
-# run some initial commands
-.PHONY: initialize_repo
-initialize_repo:
-	@echo "Initializing repo"
-	@echo "================"
-	@mkdir api tests
-	@touch api/__init__.py api/api.py api/config.py api/controller.py api/validation.py
-	@touch tests/__init__.py tests/capture_model_predictions.py tests/conftest.py tests/test_controller.py tests/test_validation.py
+.PHONY: create_dirs create_files
+create_dirs:
+	mkdir -p neural_network_model/config
+	mkdir -p neural_network_model/datasets
+	mkdir -p neural_network_model/processing
+	mkdir -p neural_network_model/trained_models
+	mkdir -p tests
 
-
-# run first the clean and then the initialize_repo
-.PHONY: initialize
-initialize: clean initialize_repo
-
-
-.PHONY: create_files
 create_files:
-	touch diff_test_requirements.txt
+	touch MANIFEST.in
+	touch config.yml
+	touch neural_network_model/VERSION
+	touch neural_network_model/__init__.py
+	touch neural_network_model/model.py
+	touch neural_network_model/pipeline.py
+	touch neural_network_model/predict.py
+	touch neural_network_model/train_pipeline.py
 	touch requirements.txt
-	touch run.py
-	touch run.sh
-	touch test_data_predictions.csv
-	touch tox.ini
+	touch setup.py
+	touch tests/__init__.py
+	touch tests/conftest.py
+	touch tests/test_predict.py
 
-# push the current commited file into the repo
-.PHONY: push
-push:
-	git remote add origin https://github.com/Atashnezhad/ml_pipeline.git
-	git branch -M main
-	git push -u origin main
+all: create_dirs create_files
