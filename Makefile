@@ -20,3 +20,13 @@ initialize_repo:
 # run first the clean and then the initialize_repo
 .PHONY: initialize
 initialize: clean initialize_repo
+
+
+.PHONY: create_files
+create_files:
+	touch diff_test_requirements.txt
+	touch requirements.txt
+	touch run.py
+	touch run.sh
+	touch test_data_predictions.csv
+	touch tox.ini
