@@ -32,8 +32,8 @@ create_files:
 	touch tox.ini
 
 # push the current commited file into the repo
-.PHONY: push
-push:
-	git remote add origin https://github.com/Atashnezhad/ml_pipeline.git
-	git branch -M main
-	git push -u origin main
+#.PHONY: push
+#push:
+#	git remote add origin https://github.com/Atashnezhad/ml_pipeline.git
+#	git branch -M main
+#	git push -u origin main
